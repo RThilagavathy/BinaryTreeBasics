@@ -1,0 +1,45 @@
+int identical(struct node*t1,struct node*t2)
+{
+    if(t1==NULL &&t2==NULL)
+      return 1;
+    if((t1!=NULL&&t2==NULL)||(t1==NULL&&t2!=NULL)||(t1->key!=t2->key))
+      return 0;
+    return identical(t1->left,t2->left)*identical(t1->right,t2->right);
+}
+int main()
+{
+    struct node *root1=NULL;
+    root1=insert(root1,50);
+    insert(root1,90);
+    insert(root1,40);
+    insert(root1,70);
+    insert(root1,60);
+    insert(root1,80);
+    insert(root1,10);
+    struct node *root2=NULL;
+    root2=insert(root2,50);
+    insert(root2,90);
+    insert(root2,40);
+    insert(root2,70);
+    insert(root2,60);
+    insert(root2,80);
+    insert(root2,10);
+    /*printf("PREORDER\n");
+    preorder(root);
+    printf("\n");
+    printf("INORDER\n");
+    inorder(root);
+    printf("\n");
+    printf("POSTORDER");
+    postorder(root);
+    printf("\n");
+    printf("%d\n",findcommonancestor(root,20,40));
+    printf("%d-minimum element\n",findmin(root));
+    printf("%d-maximium element\n",findmax(root));
+    printf("%d-Numberof leaf nodes\n",NumberofleafNodes(root));
+    struct node *newroot=mirror(root);
+    printf("Mirror-view of given tree in inorder\n");
+    inorder(newroot);*/
+    printf("Identical or not:%d",identical(root1,root2));
+    return 0;
+}
